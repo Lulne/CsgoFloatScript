@@ -4,6 +4,11 @@ import json
 from decimal import Decimal, getcontext, ROUND_HALF_UP
 from fuzzywuzzy import process
 import time
+
+# settings
+target_float = Decimal('0.069696969')
+
+
 def fetch_collections():
     url = "https://bymykel.github.io/CSGO-API/api/en/collections.json"
     response = requests.get(url)
@@ -115,7 +120,6 @@ def main():
 
     collections = fetch_collections()
     input_skins = read_skins_from_file('input_skins.json')
-    target_float = Decimal('0.069696969')
 
     possible_outcomes = find_possible_outcomes(input_skins, collections)
 
